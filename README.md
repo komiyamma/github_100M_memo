@@ -16,6 +16,7 @@ for file in $(git diff --cached --name-only); do
         exit 1
     fi
 done
+```
 
 - これで、100MBを超えるファイルをコミットしようとすると、以下のようなエラーが出てコミットできなくなる。  
 VSCodeなどでもデカいファイルを事前にチェックしなくていいので、便利。
