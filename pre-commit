@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# Check if any file being committed exceeds 100MB
+limit=104857600 # 100MB in bytes
+for file in $(git diff --cached --name-only); do
+    file_size=$(stat -c %s "$file")
+    if [ $file_size -gt $limit ]; then
+        echo "エラー：100MBを超えるファイルはコミットできません。コミットを中止します。"
+        exit 1
+    fi
+done
